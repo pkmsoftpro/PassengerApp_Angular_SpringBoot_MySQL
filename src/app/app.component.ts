@@ -4,7 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import {Issue} from './models/issue';
+import {Passenger} from './models/passenger';
 import {DataSource} from '@angular/cdk/collections';
 import {AddDialogComponent} from './dialogs/add/add.dialog.component';
 import {EditDialogComponent} from './dialogs/edit/edit.dialog.component';
@@ -44,9 +44,9 @@ export class AppComponent implements OnInit {
     this.loadData();
   }
 
-  addNew(issue: Issue) {
+  addNew(passenger: Passenger) {
     const dialogRef = this.dialog.open(AddDialogComponent, {
-      data: {dataKey: issue }
+      data: {dataKey: passenger }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -98,6 +98,7 @@ export class AppComponent implements OnInit {
 
   public loadData() {
     this.exampleDatabase = new DataService(this.httpClient);
+    // tslint:disable-next-line: no-use-before-declare
     this.dataSource = new ExampleDataSource(this.exampleDatabase, this.paginator, this.sort);
     fromEvent(this.filter.nativeElement, 'keyup')
       // .debounceTime(150)
@@ -111,7 +112,7 @@ export class AppComponent implements OnInit {
   }
 }
 
-export class ExampleDataSource extends DataSource<Issue> {
+export class ExampleDataSource extends DataSource<Passenger> {
   _filterChange = new BehaviorSubject('');
 
   get filter(): string {
@@ -122,8 +123,8 @@ export class ExampleDataSource extends DataSource<Issue> {
     this._filterChange.next(filter);
   }
 
-  filteredData: Issue[] = [];
-  renderedData: Issue[] = [];
+  filteredData: Passenger[] = [];
+  renderedData: Passenger[] = [];
 
   constructor(public _exampleDatabase: DataService,
               public _paginator: MatPaginator,
@@ -134,7 +135,7 @@ export class ExampleDataSource extends DataSource<Issue> {
   }
 
   /** Connect function called by the table to retrieve one stream containing the data to render. */
-  connect(): Observable<Issue[]> {
+  connect(): Observable<Passenger[]> {
     // Listen for any changes in the base data, sorting, filtering, or pagination
     const displayDataChanges = [
       this._exampleDatabase.dataChange,
@@ -143,17 +144,17 @@ export class ExampleDataSource extends DataSource<Issue> {
       this._paginator.page
     ];
 
-    this._exampleDatabase.getAllIssues();
+    this._exampleDatabase.getAllPassengers();
 
 
     return merge(...displayDataChanges).pipe(map( () => {
         // Filter data
-        this.filteredData = this._exampleDatabase.data.slice().filter((issue: Issue) => {
+        this.filteredData = this._exampleDatabase.data.slice().filter((passenger: Passenger) => {
 
-          const searchStr = (issue.passengerid + issue.pClass +
-                             issue.name + issue.sex + issue.age + issue.sibsp +
-                             issue.parch + issue.ticket + issue.fare + issue.cabin +
-                             issue.embarked).toLowerCase();
+          const searchStr = (passenger.passengerid + passenger.pClass +
+            passenger.name + passenger.sex + passenger.age + passenger.sibsp +
+            passenger.parch + passenger.ticket + passenger.fare + passenger.cabin +
+            passenger.embarked).toLowerCase();
 
           return searchStr.indexOf(this.filter.toLowerCase()) !== -1;
         });
@@ -173,7 +174,7 @@ export class ExampleDataSource extends DataSource<Issue> {
 
 
   /** Returns a sorted copy of the database data. */
-  sortData(data: Issue[]): Issue[] {
+  sortData(data: Passenger[]): Passenger[] {
     if (!this._sort.active || this._sort.direction === '') {
       return data;
     }
