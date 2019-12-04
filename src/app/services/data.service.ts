@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject} from 'rxjs';
-import {Issue} from '../models/issue';
+import {Passenger} from '../models/passenger';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 
 @Injectable()
@@ -10,13 +10,13 @@ export class DataService {
   private readonly DEL_URL = 'http://localhost:8081/userendpoint/deletePassenger/';
   private readonly UPD_URL = 'http://localhost:8081/userendpoint/updatePassenger/';
 
-  dataChange: BehaviorSubject<Issue[]> = new BehaviorSubject<Issue[]>([]);
+  dataChange: BehaviorSubject<Passenger[]> = new BehaviorSubject<Passenger[]>([]);
   // Temporarily stores data from dialogs
   dialogData: any;
 
   constructor (private httpClient: HttpClient) {}
 
-  get data(): Issue[] {
+  get data(): Passenger[] {
     return this.dataChange.value;
   }
 
@@ -25,8 +25,8 @@ export class DataService {
   }
 
   /** CRUD METHODS */
-  getAllIssues(): void {
-    this.httpClient.get<Issue[]>(this.API_URL).subscribe(data => {
+  getAllPassengers(): void {
+    this.httpClient.get<Passenger[]>(this.API_URL).subscribe(data => {
         this.dataChange.next(data);
       },
       (error: HttpErrorResponse) => {
@@ -34,7 +34,7 @@ export class DataService {
       });
   }
 
-  addIssue (passenger: Issue): void {
+  addPassenger (passenger: Passenger): void {
     this.dialogData = passenger;
     this.httpClient.post(this.SAVE_URL, passenger).subscribe(data => {
       this.dialogData = passenger;
@@ -44,7 +44,7 @@ export class DataService {
     });
   }
 
-  deleteIssue (id: number): void {
+  deletePassenger (id: number): void {
       this.httpClient.delete(this.DEL_URL + id).subscribe(data => {
         console.log(data);
         },
@@ -54,7 +54,7 @@ export class DataService {
       );
   }
 
-  updateItem(passenger: Issue): void {
+  updateItem(passenger: Passenger): void {
     this.dialogData = passenger;
     this.httpClient.put(this.UPD_URL + passenger.passengerid, passenger).subscribe(data => {
         this.dialogData = passenger;
