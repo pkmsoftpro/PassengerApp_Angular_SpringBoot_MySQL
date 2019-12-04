@@ -2,7 +2,7 @@
 
   <div class="form">
     <mat-form-field floatPlaceholder="never" color="accent">
-      <input matInput #filter placeholder="Filter issues">
+      <input matInput #filter placeholder="Filter passengers">
     </mat-form-field>
   </div>
 
@@ -106,7 +106,7 @@
   <mat-paginator #paginator
                  [length]="dataSource.filteredData.length"
                  [pageIndex]="0"
-                 [pageSize]="20"
-                 [pageSizeOptions]="[20,40,60,100]">
+                 [pageSize]="3"
+                 [pageSizeOptions]="[3,6,10]">
   </mat-paginator>
 </div>
