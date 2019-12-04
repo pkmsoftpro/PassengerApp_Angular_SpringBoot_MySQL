@@ -1,4 +1,4 @@
-export class Issue {
+export class Passenger {
   passengerid: number;
   pClass: number;
   name: string;
