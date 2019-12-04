@@ -1,5 +1,5 @@
 # Spring Boot Application is provide in another branch [+](https://github.com/pkmsoftpro/PassengerApp_Angular_SpringBoot_MySQL/tree/springboot_crud_mysql):  
-  ```https://github.com/pkmsoftpro/PassengerApp_Angular_SpringBoot_MySQL/tree/spring-boot_app```
+  ```https://github.com/pkmsoftpro/PassengerApp_Angular_SpringBoot_MySQL/tree/springboot_crud_mysql```
 
 # CRUD for Angular Material Table
 
