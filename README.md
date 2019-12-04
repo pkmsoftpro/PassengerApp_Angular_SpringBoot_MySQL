@@ -44,4 +44,4 @@ https://github.com/pkmsoftpro/PassengerApp_Angular_SpringBoot_MySQL/blob/springb
 ```
 
 ## Utility class to populate the database:
-  ```https://github.com/pkmsoftpro/PassengerApp_Angular_SpringBoot_MySQL/tree/springboot_crud_mysql/src/main/java/com/utility```
+https://github.com/pkmsoftpro/PassengerApp_Angular_SpringBoot_MySQL/blob/springboot_crud_mysql/src/main/java/com/utility/PopulateData.java
