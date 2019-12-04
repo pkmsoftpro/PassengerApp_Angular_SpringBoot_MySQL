@@ -21,7 +21,7 @@ Add the following bean to allow GET,PUT,POST,DELETE through [CORS](https://devel
     }
 ```
 ## Data Set:  
-https://github.com/pkmsoftpro/PassengerApp_Angular_SpringBoot_MySQL/blob/spring-boot_app/src/main/resources/train.csv  
+https://github.com/pkmsoftpro/PassengerApp_Angular_SpringBoot_MySQL/blob/springboot_crud_mysql/src/main/resources/train.csv  
 
 ## MySQL Script:
 
@@ -44,4 +44,4 @@ https://github.com/pkmsoftpro/PassengerApp_Angular_SpringBoot_MySQL/blob/spring-
 ```
 
 ## Utility class to populate the database:
-  ```https://github.com/pkmsoftpro/PassengerApp_Angular_SpringBoot_MySQL/tree/spring-boot_app/src/main/java/com/utility```
+  ```https://github.com/pkmsoftpro/PassengerApp_Angular_SpringBoot_MySQL/tree/springboot_crud_mysql/src/main/java/com/utility```
